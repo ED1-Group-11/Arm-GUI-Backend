@@ -1,0 +1,22 @@
+{
+  "name": "arm-gui-backend",
+  "version": "1.0.0",
+  "description": "ED1 Group 11, Arm GUI Backend Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ED1-Group-11/Arm-GUI-Backend.git"
+  },
+  "author": "ED1 Group 11",
+  "bugs": {
+    "url": "https://github.com/ED1-Group-11/Arm-GUI-Backend/issues"
+  },
+  "homepage": "https://github.com/ED1-Group-11/Arm-GUI-Backend#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
