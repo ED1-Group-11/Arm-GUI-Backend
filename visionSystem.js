@@ -1,4 +1,4 @@
-import ws from 'socket.io';
+const ws = require('socket.io');
 
 const visionSystem = {
     setUp: false,
@@ -42,7 +42,7 @@ const visionSystem = {
 
     establishConnection: async function() {
         if (this.connection != null) return;
-        
+
     }
 };
 
