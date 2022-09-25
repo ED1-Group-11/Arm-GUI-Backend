@@ -2,7 +2,7 @@ const fs = require('fs');
 const https = require('https');
 const server = require('./routes');
 
-const PORT = 8080;
+const PORT = process.env.NODE_ENV === 'production' ? 443 : 8080;
 
 const options = {};
 

@@ -3,7 +3,6 @@ const path = require('path');
 const webrtc = require("wrtc");
 const visionSystem = require('./visionSystem');
 
-
 const server = express();
 
 const colorSettings = new Set(['red', 'green', 'blue', 'yellow']);
