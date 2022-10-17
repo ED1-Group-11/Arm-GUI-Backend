@@ -15,7 +15,7 @@ server.use(express.static(path.join(__dirname, '../Arm-GUI/build')));
 // should be synced with vision system on startup
 const currentSettings = {
     color: 'red',
-    shape: 'triangle'
+    shape: 'triangle',
 }
 
 // To-Do: send current settings
@@ -153,11 +153,7 @@ server.post('/api/stream-video', async (req, res) => {
 
     await peer.setLocalDescription(answer);
 
-    const payload = {
-        sdp: peer.localDescription
-    }
-
-    res.status(200).json(payload);
+    res.status(200).json({ sdp: peer.localDescription });
 });
 
 module.exports = server;
