@@ -122,6 +122,8 @@ server.post('/api/vision-system', async (req, res) => {
 
     await peer.setLocalDescription(answer);
 
+    console.log('request to be streamer success');
+
     res.status(200).json({ sdp: peer.localDescription });
 });
 
@@ -131,7 +133,7 @@ server.post('/api/vision-system', async (req, res) => {
 // To-Do add more error checking dont trust that everything is working right
 server.post('/api/stream-video', async (req, res) => {
 
-    console.log('Req to stream video');
+    console.log('request to stream video');
 
     if (!req.body.sdp) {
         res.status(400).json({'error': true});
@@ -156,6 +158,8 @@ server.post('/api/stream-video', async (req, res) => {
     const answer = await peer.createAnswer();
 
     await peer.setLocalDescription(answer);
+
+    console.log('request to stream success');
 
     res.status(200).json({ sdp: peer.localDescription });
 });
