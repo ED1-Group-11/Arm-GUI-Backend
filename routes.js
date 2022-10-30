@@ -99,6 +99,8 @@ let visionSystemStream = null;
 // To-Do add more error checking dont trust that everything is working right
 server.post('/api/vision-system', async (req, res) => {
 
+    console.log('request to be the be the streamer');
+
     if (!req.body.sdp) {
         res.status(400).json({'error': true});
         return;
@@ -128,6 +130,8 @@ server.post('/api/vision-system', async (req, res) => {
 // https://github.com/coding-with-chaim/webrtc-one-to-many/blob/master/server.js#L12
 // To-Do add more error checking dont trust that everything is working right
 server.post('/api/stream-video', async (req, res) => {
+
+    console.log('Req to stream video');
 
     if (!req.body.sdp) {
         res.status(400).json({'error': true});
