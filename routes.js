@@ -163,6 +163,7 @@ server.post('/api/stream-video', async (req, res) => {
     });
 
     try {
+        console.log('sdp: ', req.body.sdp)
         const desciption = new webrtc.RTCSessionDescription(req.body.sdp);
 
         await peer.setRemoteDescription(desciption);
