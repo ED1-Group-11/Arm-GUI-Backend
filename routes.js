@@ -162,9 +162,14 @@ server.post('/api/stream-video', async (req, res) => {
         }]
     });
 
-    const desciption = new webrtc.RTCSessionDescription(req.body.sdp);
+    try {
+        const desciption = new webrtc.RTCSessionDescription(req.body.sdp);
 
-    await peer.setRemoteDescription(desciption);
+        await peer.setRemoteDescription(desciption);
+    }
+    catch (e) {
+        console.log('Error setting remote description: ', e)
+    }
 
     visionSystemStream.getTracks().forEach(track => peer.addTrack(track, visionSystemStream));
 
