@@ -107,7 +107,11 @@ server.post('/api/vision-system', async (req, res) => {
     }
 
     const peer = new webrtc.RTCPeerConnection({
-        iceServers: [{urls: ['stun:stun.stunprotocol.org', 'stun:54.88.172.213']}]
+        iceServers: [{
+            urls: ['stun:stun.stunprotocol.org', 'stun:54.88.172.213'],
+            username: 'username',
+            credential: 'password',
+        }]
     });
 
     peer.ontrack = function(track) {
@@ -146,7 +150,11 @@ server.post('/api/stream-video', async (req, res) => {
     }
 
     const peer = new webrtc.RTCPeerConnection({
-        iceServers: [{urls: ['stun:stun.stunprotocol.org', 'turn:54.88.172.213']}]
+        iceServers: [{
+            urls: ['stun:stun.stunprotocol.org', 'turn:54.88.172.213'],
+            username: 'username',
+            password: 'password',
+        }]
     });
 
     const desciption = new webrtc.RTCSessionDescription(req.body.sdp);
