@@ -118,9 +118,14 @@ server.post('/api/vision-system', async (req, res) => {
         visionSystemStream = track.streams[0];
     }
 
-    const description = new webrtc.RTCSessionDescription(req.body.sdp);
+    try {
+        const description = new webrtc.RTCSessionDescription(req.body.sdp);
 
-    await peer.setRemoteDescription(description);
+        await peer.setRemoteDescription(description);
+    }
+    catch (e) {
+        console.log('Error setting description: ', e)
+    }
 
     const answer = await peer.createAnswer();
 
