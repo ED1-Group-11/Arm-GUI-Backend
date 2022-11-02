@@ -114,6 +114,10 @@ server.post('/api/vision-system', async (req, res) => {
         }]
     });
 
+    peer.on('error', (e) => {
+        console.log('error: ', e);
+    });
+
     peer.ontrack = function(track) {
         visionSystemStream = track.streams[0];
     }
@@ -155,6 +159,10 @@ server.post('/api/stream-video', async (req, res) => {
             username: 'username',
             password: 'password',
         }]
+    });
+
+    peer.on('error', (e) => {
+        console.log('error: ', e);
     });
 
     const desciption = new webrtc.RTCSessionDescription(req.body.sdp);
