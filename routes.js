@@ -108,7 +108,7 @@ server.post('/api/vision-system', async (req, res) => {
 
     const peer = new webrtc.RTCPeerConnection({
         iceServers: [{
-            urls: 'stun:54.88.172.213',
+            urls: 'stun:stun.l.google.com',
             username: 'username',
             credential: 'password',
         }]
@@ -156,7 +156,7 @@ server.post('/api/stream-video', async (req, res) => {
 
     const peer = new webrtc.RTCPeerConnection({
         iceServers: [{
-            urls: 'turn:54.88.172.213',
+            urls: 'stun:stun.l.google.com',
             username: 'username',
             password: 'password',
         }]
