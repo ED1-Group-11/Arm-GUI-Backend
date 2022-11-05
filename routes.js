@@ -107,11 +107,7 @@ server.post('/api/vision-system', async (req, res) => {
     }
 
     const peer = new webrtc.RTCPeerConnection({
-        iceServers: [{
-            urls: 'stun:stun.l.google.com',
-            username: 'username',
-            credential: 'password',
-        }]
+        iceServers: [{ urls: ["stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19305" ] }]
     });
 
     peer.ontrack = function(track) {
@@ -155,15 +151,10 @@ server.post('/api/stream-video', async (req, res) => {
     }
 
     const peer = new webrtc.RTCPeerConnection({
-        iceServers: [{
-            urls: 'stun:stun.l.google.com',
-            username: 'username',
-            password: 'password',
-        }]
+        iceServers: [{ urls: ["stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19305" ] }]
     });
 
     try {
-        console.log('sdp: ', req.body.sdp)
         const desciption = new webrtc.RTCSessionDescription(req.body.sdp);
 
         await peer.setRemoteDescription(desciption);
