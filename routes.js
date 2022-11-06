@@ -107,7 +107,7 @@ server.post('/api/vision-system', async (req, res) => {
     }
 
     const peer = new webrtc.RTCPeerConnection({
-        iceServers: [{ urls: ["stun:54.88.172.213"] }]
+        iceServers: [{ urls: ["turn:54.89.171.143?transport=tcp"] }]
     });
 
     peer.ontrack = function(track) {
@@ -151,7 +151,7 @@ server.post('/api/stream-video', async (req, res) => {
     }
 
     const peer = new webrtc.RTCPeerConnection({
-        iceServers: [{ urls: ["stun:54.88.172.213"] }]
+        iceServers: [{ urls: ["turn:54.89.171.143?transport=tcp"] }]
     });
 
     try {
