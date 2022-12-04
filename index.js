@@ -35,7 +35,7 @@ server.get('/api/current-settings', (req, res) => {
 
 server.post('/api/change-settings', (req, res) => {
     const newSettings = req.body;
-    console.log('Recieved settings', newSettings);
+    //console.log('Recieved settings', newSettings);
 
     if (!newSettings || !newSettings.color || !newSettings.shape) {
         res.status(400).json({error: 'must have color and shape in request'});

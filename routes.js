@@ -94,7 +94,7 @@ server.post('/api/stream-video', async (req, res) => {
 });
 
 server.get('*', (req, res) => {
-    console.log(req);
+    //console.log(req);
 
     res.status(404).send('Hello World');
 });
