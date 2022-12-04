@@ -137,17 +137,6 @@ const io = require('socket.io')(httpsServer);
 io.on('connection', async socket => {
     visionSystemSocket = socket;
 
-    new Promise((resolve, reject) => setTimeout(resolve, 2500)).then(() => {
-        visionSystemSocket.emit('up', 1);
-        visionSystemSocket.emit('down', 2);
-        visionSystemSocket.emit('right', 3);
-        visionSystemSocket.emit('left', 4);
-
-        const newSetting = "color red shape square";
-        visionSystemSocket.emit('change_settings', newSetting);
-        console.log("DONE")
-    });
-
     socket.on('ok', data => {
         console.log('response OK: ', data)
     });
