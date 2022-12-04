@@ -1,4 +1,4 @@
-const ws = require('socket.io');
+const io = require('socket.io');
 
 const visionSystem = {
     setUp: false,
@@ -9,7 +9,7 @@ const visionSystem = {
             throw new Error('units must be a number')
         }
 
-        this._move(units, 'left');
+        await this._move(units, 'left');
     },
 
     moveRight: async function(units) {
@@ -17,7 +17,7 @@ const visionSystem = {
             throw new Error('units must be a number')
         }
 
-        this._move(units, 'right');
+        await this._move(units, 'right');
     },
 
     moveUp: async function(units) {

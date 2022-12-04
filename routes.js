@@ -5,90 +5,9 @@ const visionSystem = require('./visionSystem');
 
 const server = express();
 
-const colorSettings = new Set(['red', 'green', 'blue', 'yellow']);
-const shapeSettings = new Set(['pentagon', 'square', 'hexagon', 'heptagon', 'octagon', 'triangle']);
-
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static(path.join(__dirname, '../Arm-GUI/build')));
-
-// should be synced with vision system on startup
-const currentSettings = {
-    color: 'red',
-    shape: 'triangle',
-}
-
-// To-Do: send current settings
-server.get('/api/current-settings', (req, res) => {
-    res.status(200).json(currentSettings);
-});
-
-
-server.post('/api/arm-left', async (req, res) => {
-
-    if (!req.body.units) {
-        res.status(400).json({'error': 'must specify units'});
-        return;
-    }
-
-    await visionSystem.moveLeft(req.body.units);
-
-    res.status(201).json({'error': false})
-});
-
-server.post('/api/arm-right', async (req, res) => {
-
-    if (!req.body.units) {
-        res.status(400).json({'error': 'must specify units'});
-        return;
-    }
-
-    await visionSystem.moveRight(req.body.units);
-
-    res.status(201).json({'error': false})
-});
-
-server.post('/api/arm-down', async (req, res) => {
-
-    if (!req.body.units) {
-        res.status(400).json({'error': 'must specify units'});
-        return;
-    }
-
-    await visionSystem.moveDown(req.body.units);
-
-    res.status(201).json({'error': false})
-});
-
-server.post('/api/arm-up', async (req, res) => {
-
-    if (!req.body.units) {
-        res.status(400).json({'error': 'must specify units'});
-        return;
-    }
-
-    await visionSystem.moveUp(req.body.units);
-
-    res.status(201).json({'error': false})
-});
-
-server.post('/api/change-settings', (req, res) => {
-    const newSettings = req.body;
-    console.log('Recieved settings', newSettings);
-
-    if (!newSettings || !newSettings.color || !newSettings.shape) {
-        res.status(400).json({error: 'must have color and shape in request'});
-        return;
-    }
-
-    if (!colorSettings.has(newSettings.color) || !shapeSettings.has(newSettings.shape)) {
-        res.status(400).json({error: 'not a valid color of shape setting'});
-        return;
-    }
-
-    // TO-DO send request to vision system with new settings
-    res.status(200).json({'error': false});
-});
 
 
 // this keeps track of the video stream from the vision system
@@ -172,6 +91,12 @@ server.post('/api/stream-video', async (req, res) => {
     console.log('request to stream success');
 
     res.status(200).json({ sdp: peer.localDescription });
+});
+
+server.get('*', (req, res) => {
+    console.log(req);
+
+    res.status(404).send('Hello World');
 });
 
 module.exports = server;
